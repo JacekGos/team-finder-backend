@@ -2,6 +2,8 @@ package com.jacekg.teamfinder.venue.service;
 
 import com.jacekg.teamfinder.venue.dto.VenueRequest;
 import com.jacekg.teamfinder.venue.exceptions.CreateVenueException;
+import com.jacekg.teamfinder.venue.geocoding.model.GeocodeLocation;
+import com.jacekg.teamfinder.venue.geocoding.model.GeocodeObject;
 import com.jacekg.teamfinder.venue.model.ActivityType;
 import com.jacekg.teamfinder.venue.model.Venue;
 import com.jacekg.teamfinder.venue.repository.ActivityRepository;
