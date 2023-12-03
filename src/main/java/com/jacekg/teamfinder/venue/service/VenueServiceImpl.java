@@ -5,6 +5,7 @@ import com.jacekg.teamfinder.venue.model.ActivityType;
 import com.jacekg.teamfinder.venue.model.Venue;
 import com.jacekg.teamfinder.venue.repository.ActivityRepository;
 import com.jacekg.teamfinder.venue.repository.VenueRepository;
+import com.jacekg.teamfinder.venue.utils.factory.VenueBaseCreator;
 import lombok.AllArgsConstructor;
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.GeometryFactory;

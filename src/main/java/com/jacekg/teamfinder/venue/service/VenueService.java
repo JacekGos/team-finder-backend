@@ -1,5 +1,6 @@
 package com.jacekg.teamfinder.venue.service;
 
+import com.jacekg.teamfinder.venue.dto.VenueRequest;
 import com.jacekg.teamfinder.venue.model.Venue;
 
 import java.io.IOException;
