@@ -52,7 +52,7 @@ public abstract class Venue {
     @JoinColumn(name = "venue_id")
     private List<EventDate> eventDates = new ArrayList<>();
 
-    @ManyToMany(fetch = FetchType.LAZY,
+    @ManyToMany(fetch = FetchType.EAGER,
             cascade = {CascadeType.DETACH, CascadeType.MERGE,
                     CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinTable(name = "venue_activity_type",
@@ -69,7 +69,15 @@ public abstract class Venue {
 
     @Override
     public String toString() {
-        return "Venue [id=" + id + ", name=" + name + ", price=" + price + "]";
+        return "Venue{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", address='" + address + '\'' +
+                ", location=" + location +
+                ", eventDates=" + eventDates +
+                ", activities=" + activities +
+                '}';
     }
 
     public List<Date> getDates() {

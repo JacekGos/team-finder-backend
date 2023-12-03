@@ -47,8 +47,7 @@ public class ModelMapperConverter implements ModelConverter {
 	}
 	
 	public VenueResponse convertToResponse(Venue venue) {
-		
-		VenueResponse response = modelMapper.map(venue, VenueResponse.class);
-		return response;
+
+        return modelMapper.map(venue, VenueResponse.class);
 	}
 }

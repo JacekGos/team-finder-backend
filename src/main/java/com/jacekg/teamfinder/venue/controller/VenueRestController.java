@@ -20,21 +20,23 @@ import static org.springframework.http.ResponseEntity.status;
 public class VenueRestController {
 	
 	VenueService venueService;
-	ModelConverter modelConverter;
+//	ModelConverter modelConverter;
 
 	public VenueRestController(VenueService venueService, ModelConverter modelConverter) {
 		this.venueService = venueService;
-		this.modelConverter = modelConverter;
+//		this.modelConverter = modelConverter;
 	}
 	
 	@GetMapping("/venues")
 	public ResponseEntity<List<VenueResponse>> getAllVenues() {
-		return status(HttpStatus.OK).body(venueService.getAllVenues().stream().map(venue -> modelConverter.convertToResponse(venue)).collect(Collectors.toList()));
+		return status(HttpStatus.OK).body(venueService.getAllVenues());
+//		return status(HttpStatus.OK).body(venueService.getAllVenues().stream().map(venue -> modelConverter.convertToResponse(venue)).collect(Collectors.toList()));
 	}
 	
 	@PostMapping("/venues")
 	public ResponseEntity<VenueResponse> createVenue(@Valid @RequestBody VenueRequest venueRequest) throws Exception {
-		return status(HttpStatus.CREATED).body(modelConverter.convertToResponse(venueService.createVenue(venueRequest)));
+		return status(HttpStatus.CREATED).body(venueService.createVenue(venueRequest));
+//		return status(HttpStatus.CREATED).body(modelConverter.convertToResponse(venueService.createVenue(venueRequest)));
 	}
 	
 }

@@ -1,6 +1,7 @@
 package com.jacekg.teamfinder.venue.service;
 
 import com.jacekg.teamfinder.venue.dto.VenueRequest;
+import com.jacekg.teamfinder.venue.dto.VenueResponse;
 import com.jacekg.teamfinder.venue.exceptions.CreateVenueException;
 import com.jacekg.teamfinder.venue.geocoding.model.GeocodeLocation;
 import com.jacekg.teamfinder.venue.geocoding.model.GeocodeObject;
@@ -9,6 +10,7 @@ import com.jacekg.teamfinder.venue.model.ActivityType;
 import com.jacekg.teamfinder.venue.model.Venue;
 import com.jacekg.teamfinder.venue.repository.ActivityRepository;
 import com.jacekg.teamfinder.venue.repository.VenueRepository;
+import com.jacekg.teamfinder.venue.utils.converter.ModelConverter;
 import com.jacekg.teamfinder.venue.utils.factory.VenueBaseCreator;
 import lombok.AllArgsConstructor;
 import org.locationtech.jts.geom.Coordinate;
@@ -22,6 +24,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -32,20 +35,21 @@ public class VenueServiceImpl implements VenueService {
 	private GeocodingService geocodingService;
 	private GeometryFactory geometryFactory;
 	private VenueBaseCreator venueCreator;
+	private ModelConverter modelConverter;
 
 	@Transactional
 	@Override
-	public List<Venue> getAllVenues() {
+	public List<VenueResponse> getAllVenues() {
 
 		List<Venue> venues = venueRepository.findAll();
 		venues.forEach(venue -> System.out.println("found venue: " +  venue.toString()));
-		
-		return venues;
+
+		return venues.stream().map(venue -> modelConverter.convertToResponse(venue)).collect(Collectors.toList());
 	}
 	
 	@Transactional
 	@Override
-	public Venue createVenue(VenueRequest venueRequest) throws IOException {
+	public VenueResponse createVenue(VenueRequest venueRequest) throws IOException {
 		
 		Venue venue = venueCreator.createVenue(venueRequest);
 		venue.setActivities(getActivitiesByNames(venueRequest.getActivities()));
@@ -58,7 +62,7 @@ public class VenueServiceImpl implements VenueService {
 		
 		venueRepository.save(venue);
 		
-		return venue;
+		return modelConverter.convertToResponse(venue);
 	}
 	
 	private Point getLocationByAddress(String address)  {
