@@ -28,7 +28,7 @@ public class VenueRestController {
 	}
 	
 	@GetMapping("/venues")
-	public ResponseEntity<List<VenueResponse>> getAllEvents() {
+	public ResponseEntity<List<VenueResponse>> getAllVenues() {
 		return status(HttpStatus.OK).body(venueService.getAllVenues().stream().map(venue -> modelConverter.convertToResponse(venue)).collect(Collectors.toList()));
 	}
 	
