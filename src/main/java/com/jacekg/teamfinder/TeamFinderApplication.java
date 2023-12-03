@@ -12,5 +12,4 @@ public class TeamFinderApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(TeamFinderApplication.class, args);
 	}
-
 }

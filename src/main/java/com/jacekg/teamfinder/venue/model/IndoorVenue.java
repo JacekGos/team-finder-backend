@@ -3,8 +3,8 @@ package com.jacekg.teamfinder.venue.model;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Entity;
 import java.util.Set;
 
 @Entity
