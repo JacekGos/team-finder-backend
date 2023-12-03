@@ -74,5 +74,4 @@ public abstract class Venue {
     public List<String> getActivitiesNames() {
         return this.activities.stream().map(ActivityType::getName).collect(Collectors.toList());
     }
-
 }
