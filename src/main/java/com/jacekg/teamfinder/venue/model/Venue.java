@@ -79,4 +79,12 @@ public abstract class Venue {
     public List<String> getActivitiesNames() {
         return this.activities.stream().map(ActivityType::getName).collect(Collectors.toList());
     }
+
+    public String getLng() {
+        return String.valueOf(this.location.getX());
+    }
+
+    public String getLat() {
+        return String.valueOf(this.location.getY());
+    }
 }
