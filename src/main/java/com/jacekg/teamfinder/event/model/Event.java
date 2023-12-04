@@ -1,0 +1,77 @@
+package com.jacekg.teamfinder.event.model;
+
+import com.jacekg.teamfinder.user.model.User;
+import com.jacekg.teamfinder.venue.model.ActivityType;
+import jakarta.persistence.DiscriminatorColumn;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
+@Entity
+@Table(name = "event")
+@DiscriminatorColumn(name = "event_type")
+public abstract class Event {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    private Long id;
+
+    @Column(name = "name", nullable = false)
+    private String name;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "activity_type", nullable = false)
+    protected ActivityType activityType;
+
+    @Column(name = "date", nullable = false)
+    private LocalDateTime date;
+
+    @Column(name = "price", nullable = false)
+    private float price;
+
+    @Column(name = "venue_id", nullable = false)
+    private long venueId;
+
+    @ManyToOne(fetch = FetchType.LAZY,
+            cascade = {CascadeType.DETACH, CascadeType.MERGE,
+                    CascadeType.PERSIST, CascadeType.REFRESH})
+    @JoinColumn(name = "user_id")
+    private User creator;
+
+    @ManyToMany(mappedBy = "players")
+    private Set<User> players = new HashSet<>();
+
+    public Event(String name, ActivityType activityType, LocalDateTime date, float price, Long venueId, User creator) {
+        this.name = name;
+        this.activityType = activityType;
+        this.date = date;
+        this.price = price;
+        this.venueId = venueId;
+        this.creator = creator;
+    }
+}
