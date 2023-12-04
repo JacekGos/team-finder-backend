@@ -1,5 +1,6 @@
 package com.jacekg.teamfinder.venue.model;
 
+import com.jacekg.teamfinder.event.model.Event;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -7,6 +8,7 @@ import lombok.Setter;
 
 import jakarta.persistence.*;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -24,6 +26,12 @@ public class ActivityType {
 	
 	@Column(name = "name", nullable = false)
 	private String name;
+
+	@OneToMany(fetch = FetchType.LAZY,
+			mappedBy = "activityType",
+			cascade = CascadeType.ALL,
+			orphanRemoval = true)
+	private List<Event> games;
 	
 	@ManyToMany(mappedBy = "activities")
 	private Set<Venue> venues = new HashSet<>();

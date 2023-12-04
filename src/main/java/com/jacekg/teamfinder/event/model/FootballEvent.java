@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import com.jacekg.teamfinder.user.model.User;
 import com.jacekg.teamfinder.venue.model.ActivityType;
+import com.jacekg.teamfinder.venue.model.Venue;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 
@@ -17,7 +18,7 @@ import lombok.Builder;
 public class FootballEvent extends Event {
 
     @Builder
-    public FootballEvent(String name, ActivityType activityType, LocalDateTime date, float price, long venueId, User creator) {
-        super(name, activityType, date, price, venueId, creator);
+    public FootballEvent(String name, ActivityType activityType, LocalDateTime date, float price, Venue venue, User creator) {
+        super(name, activityType, date, price, venue, creator);
     }
 }
