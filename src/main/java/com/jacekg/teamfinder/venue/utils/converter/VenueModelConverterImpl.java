@@ -14,11 +14,11 @@ import java.util.List;
 
 
 @Component
-public class VenueConverter implements VenueModelConverter {
+public class VenueModelConverterImpl implements VenueModelConverter {
 	
 	private final ModelMapper modelMapper;
 
-	public VenueConverter(ModelMapper modelMapper) {
+	public VenueModelConverterImpl(ModelMapper modelMapper) {
 		this.modelMapper = modelMapper;
 	}
 

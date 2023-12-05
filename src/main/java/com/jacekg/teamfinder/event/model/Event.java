@@ -89,8 +89,8 @@ public abstract class Event {
         return venue != null ? venue.getId() : 0;
     }
 
-    public long getCreatorId() {
-        return this.creator != null ? creator.getId() : 0;
+    public long getCreatorUserId() {
+        return creator != null ? creator.getId() : 0;
     }
 
     public void addUser(User user) {
