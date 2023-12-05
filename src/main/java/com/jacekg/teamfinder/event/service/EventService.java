@@ -11,4 +11,6 @@ public interface EventService {
     public List<EventResponse> getAllEvents();
 
     public EventResponse createEvent(EventRequest eventRequest);
+
+    void removeEvent(long eventId);
 }
