@@ -2,6 +2,8 @@ package com.jacekg.teamfinder.config;
 
 import com.jacekg.teamfinder.activitytype.repository.ActivityRepository;
 import com.jacekg.teamfinder.event.utils.factory.EventCreator;
+import com.jacekg.teamfinder.user.model.User;
+import com.jacekg.teamfinder.user.model.repository.UserRepository;
 import com.jacekg.teamfinder.venue.repository.VenueRepository;
 import com.jacekg.teamfinder.venue.utils.factory.VenueCreator;
 import lombok.AllArgsConstructor;
@@ -18,6 +20,7 @@ public class BaseConfiguration {
 
     ActivityRepository activityRepository;
     VenueRepository venueRepository;
+    UserRepository userRepository;
 
     @Bean
     public ModelMapper modelMapper() {
@@ -36,6 +39,6 @@ public class BaseConfiguration {
 
     @Bean
     public EventCreator eventBaseCreator() {
-        return new EventCreator(activityRepository, venueRepository);
+        return new EventCreator(activityRepository, venueRepository, userRepository);
     }
 }

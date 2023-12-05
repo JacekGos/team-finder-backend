@@ -72,10 +72,11 @@ public abstract class Event {
     @ManyToMany(mappedBy = "participatedGames")
     private Set<User> players = new HashSet<>();
 
-    public Event(String name, ActivityType activityType, Venue venue, LocalDateTime date, float price) {
+    public Event(String name, ActivityType activityType, Venue venue, User creator, LocalDateTime date, float price) {
         this.name = name;
         this.activityType = activityType;
         this.venue = venue;
+        this.creator = creator;
         this.date = date;
         this.price = price;
     }
@@ -88,8 +89,8 @@ public abstract class Event {
         return venue != null ? venue.getId() : 0;
     }
 
-    public void addCreator(User user) {
-        this.creator = user;
+    public long getCreatorId() {
+        return this.creator != null ? creator.getId() : 0;
     }
 
     public void addUser(User user) {

@@ -32,6 +32,7 @@ public class EventConverter implements EventModelConverter {
 			protected void configure() {
 				map().setUsersId(source.getPlayersId());
 				map().setVenueId(source.getVenueId());
+				map().setCreatorUserId(source.getCreatorId());
 			}
 		};
 

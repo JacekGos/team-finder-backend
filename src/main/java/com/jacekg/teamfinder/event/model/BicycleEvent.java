@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 public class BicycleEvent extends Event {
 
     @Builder
-    public BicycleEvent(String name, ActivityType activityType, LocalDateTime date, float price, Venue venue, User creator) {
-        super(name, activityType, venue, date, price);
+    public BicycleEvent(String name, ActivityType activityType, Venue venue, User creator, LocalDateTime date, float price) {
+        super(name, activityType, venue, creator, date, price);
     }
 }

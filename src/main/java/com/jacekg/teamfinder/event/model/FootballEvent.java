@@ -18,7 +18,7 @@ import lombok.Builder;
 public class FootballEvent extends Event {
 
     @Builder
-    public FootballEvent(String name, ActivityType activityType, Venue venue, LocalDateTime date, float price) {
-        super(name, activityType, venue, date, price);
+    public FootballEvent(String name, ActivityType activityType, Venue venue, User creator, LocalDateTime date, float price) {
+        super(name, activityType, venue, creator, date, price);
     }
 }
