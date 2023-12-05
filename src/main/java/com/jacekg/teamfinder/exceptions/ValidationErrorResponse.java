@@ -1,4 +1,4 @@
-package com.jacekg.teamfinder.venue.exceptions;
+package com.jacekg.teamfinder.exceptions;
 
 import lombok.Getter;
 import lombok.Setter;

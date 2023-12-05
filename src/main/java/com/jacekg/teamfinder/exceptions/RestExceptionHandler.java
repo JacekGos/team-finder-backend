@@ -1,5 +1,6 @@
-package com.jacekg.teamfinder.venue.exceptions;
+package com.jacekg.teamfinder.exceptions;
 
+import com.jacekg.teamfinder.venue.exceptions.CreateVenueException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;

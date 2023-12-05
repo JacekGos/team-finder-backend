@@ -3,6 +3,7 @@ package com.jacekg.teamfinder.event.utils.factory;
 import com.jacekg.teamfinder.activitytype.model.ActivityType;
 import com.jacekg.teamfinder.activitytype.repository.ActivityRepository;
 import com.jacekg.teamfinder.event.dto.EventRequest;
+import com.jacekg.teamfinder.event.exceptions.CreateEventException;
 import com.jacekg.teamfinder.event.model.*;
 import com.jacekg.teamfinder.venue.dto.VenueRequest;
 import com.jacekg.teamfinder.venue.exceptions.CreateVenueException;
@@ -25,7 +26,6 @@ public class EventCreator extends EventBaseCreator {
     public Event createEvent(EventRequest event) {
 
         Optional<ActivityType> activityType = activityRepository.findByName(event.getName());
-
 
         Event newEvent = null;
 

@@ -3,14 +3,13 @@ package com.jacekg.teamfinder.venue.controller;
 import com.jacekg.teamfinder.venue.dto.VenueRequest;
 import com.jacekg.teamfinder.venue.dto.VenueResponse;
 import com.jacekg.teamfinder.venue.service.VenueService;
-import com.jacekg.teamfinder.venue.utils.converter.ModelConverter;
+import com.jacekg.teamfinder.venue.utils.converter.VenueModelConverter;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import jakarta.validation.Valid;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static org.springframework.http.ResponseEntity.status;
 
@@ -22,7 +21,7 @@ public class VenueRestController {
 	VenueService venueService;
 //	ModelConverter modelConverter;
 
-	public VenueRestController(VenueService venueService, ModelConverter modelConverter) {
+	public VenueRestController(VenueService venueService, VenueModelConverter modelConverter) {
 		this.venueService = venueService;
 //		this.modelConverter = modelConverter;
 	}

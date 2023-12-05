@@ -17,6 +17,6 @@ public class BicycleEvent extends Event {
 
     @Builder
     public BicycleEvent(String name, ActivityType activityType, LocalDateTime date, float price, Venue venue, User creator) {
-        super(name, activityType, date, price, venue, creator);
+        super(name, activityType, date, price);
     }
 }

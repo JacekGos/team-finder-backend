@@ -10,7 +10,7 @@ import com.jacekg.teamfinder.activitytype.model.ActivityType;
 import com.jacekg.teamfinder.venue.model.Venue;
 import com.jacekg.teamfinder.activitytype.repository.ActivityRepository;
 import com.jacekg.teamfinder.venue.repository.VenueRepository;
-import com.jacekg.teamfinder.venue.utils.converter.ModelConverter;
+import com.jacekg.teamfinder.venue.utils.converter.VenueModelConverter;
 import com.jacekg.teamfinder.venue.utils.factory.VenueBaseCreator;
 import lombok.AllArgsConstructor;
 import org.locationtech.jts.geom.Coordinate;
@@ -35,7 +35,7 @@ public class VenueServiceImpl implements VenueService {
 	private GeocodingService geocodingService;
 	private GeometryFactory geometryFactory;
 	private VenueBaseCreator venueCreator;
-	private ModelConverter modelConverter;
+	private VenueModelConverter modelConverter;
 
 	@Transactional
 	@Override
