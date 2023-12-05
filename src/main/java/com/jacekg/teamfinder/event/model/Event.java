@@ -74,16 +74,22 @@ public abstract class Event {
     @ManyToMany(mappedBy = "participatedGames")
     private Set<User> players = new HashSet<>();
 
-    public Event(String name, ActivityType activityType, LocalDateTime date, float price, Venue venue, User creator) {
+    public Event(String name, ActivityType activityType, LocalDateTime date, float price) {
         this.name = name;
         this.activityType = activityType;
         this.date = date;
         this.price = price;
-        this.venue = venue;
-        this.creator = creator;
     }
 
     public List<Long> getPlayersId() {
         return this.players.stream().map(User::getId).collect(Collectors.toList());
+    }
+
+    public void addCreator(User user) {
+        this.creator = user;
+    }
+
+    public void addUser(User user) {
+        this.players.add(user);
     }
 }

@@ -1,7 +1,7 @@
 package com.jacekg.teamfinder.event.service;
 
 import com.jacekg.teamfinder.event.model.Event;
-import com.sun.jdi.request.EventRequest;
+import com.jacekg.teamfinder.event.dto.EventRequest;
 
 import java.util.List;
 
