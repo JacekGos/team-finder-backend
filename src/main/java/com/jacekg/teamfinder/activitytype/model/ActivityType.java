@@ -1,6 +1,7 @@
-package com.jacekg.teamfinder.venue.model;
+package com.jacekg.teamfinder.activitytype.model;
 
 import com.jacekg.teamfinder.event.model.Event;
+import com.jacekg.teamfinder.venue.model.Venue;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

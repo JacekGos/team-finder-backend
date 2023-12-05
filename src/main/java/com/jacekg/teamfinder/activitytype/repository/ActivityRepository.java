@@ -1,6 +1,6 @@
-package com.jacekg.teamfinder.venue.repository;
+package com.jacekg.teamfinder.activitytype.repository;
 
-import com.jacekg.teamfinder.venue.model.ActivityType;
+import com.jacekg.teamfinder.activitytype.model.ActivityType;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

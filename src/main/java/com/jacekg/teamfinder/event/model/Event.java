@@ -1,7 +1,7 @@
 package com.jacekg.teamfinder.event.model;
 
 import com.jacekg.teamfinder.user.model.User;
-import com.jacekg.teamfinder.venue.model.ActivityType;
+import com.jacekg.teamfinder.activitytype.model.ActivityType;
 import com.jacekg.teamfinder.venue.model.Venue;
 import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.Entity;
@@ -10,8 +10,6 @@ import jakarta.persistence.Table;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.EnumType;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.CascadeType;

@@ -1,5 +1,6 @@
 package com.jacekg.teamfinder.venue.model;
 
+import com.jacekg.teamfinder.activitytype.model.ActivityType;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 
