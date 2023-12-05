@@ -30,9 +30,13 @@ public class EventModelConverterImpl implements EventModelConverter {
 		PropertyMap<Event, EventResponse> eventPropertyMap = new PropertyMap<Event, EventResponse>() {
 			@Override
 			protected void configure() {
-				map().setCreatorUserId(source.getCreatorUserId());
-				map().setPlayersId(source.getPlayersId());
 				map().setVenueId(source.getVenueId());
+				map().setLocation(source.getLocation());
+				map().setCity(source.getCity());
+				map().setStreet(source.getStreet());
+				map().setCreatorUserId(source.getCreatorUserId());
+				map().setCreatorUsername(source.getCreatorUsername());
+				map().setPlayersId(source.getPlayersId());
 			}
 		};
 

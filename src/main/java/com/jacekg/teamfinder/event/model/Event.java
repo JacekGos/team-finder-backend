@@ -1,5 +1,6 @@
 package com.jacekg.teamfinder.event.model;
 
+import com.jacekg.teamfinder.event.dto.Location;
 import com.jacekg.teamfinder.user.model.User;
 import com.jacekg.teamfinder.activitytype.model.ActivityType;
 import com.jacekg.teamfinder.venue.model.Venue;
@@ -31,7 +32,6 @@ import java.util.stream.Collectors;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
 @Entity
 @Table(name = "event")
 @DiscriminatorColumn(name = "event_type")
@@ -96,5 +96,46 @@ public abstract class Event {
 
     public void addUser(User user) {
         this.players.add(user);
+    }
+
+    public Location getLocation() {
+        return venue != null ? new Location(venue.getLocation().getX(), venue.getLocation().getY()) : null;
+    }
+
+    public String getCity() {
+        if (venue != null) {
+            int comaIndex = venue.getAddress().indexOf(',');
+            if (comaIndex != -1) {
+                return venue.getAddress().substring(0 , comaIndex);
+            }
+        }
+        return "";
+    }
+
+    public String getStreet() {
+        if (venue != null) {
+            int comaIndex = venue.getAddress().indexOf(',');
+            if (comaIndex != -1) {
+                return venue.getAddress().substring(comaIndex + 2);
+            }
+        }
+        return "";
+    }
+
+    public String getCreatorUsername() {
+        return creator != null ? creator.getUsername() : "";
+    }
+
+    @Override
+    public String toString() {
+        return "Event{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", activityType=" + activityType +
+                ", date=" + date +
+                ", price=" + price +
+                ", creator=" + creator.getUsername() +
+                ", playersNumber=" + players.size() +
+                '}';
     }
 }

@@ -23,15 +23,23 @@ public class EventResponse {
 
     private String name;
 
-    private String activityType;
-
-    private LocalDateTime date;
-
-    private float price;
-
     private Long venueId;
+
+    private Location location;
+
+    private String city;
+
+    private String street;
 
     private Long creatorUserId;
 
+    private String creatorUsername;
+
     private List<Long> playersId = new ArrayList<>();
+
+    private String activityType;
+
+    private float price;
+
+    private LocalDateTime date;
 }
