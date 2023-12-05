@@ -23,7 +23,9 @@ import lombok.ToString;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Getter
 @Setter
@@ -79,5 +81,9 @@ public abstract class Event {
         this.price = price;
         this.venue = venue;
         this.creator = creator;
+    }
+
+    public List<Long> getPlayersId() {
+        return this.players.stream().map(User::getId).collect(Collectors.toList());
     }
 }

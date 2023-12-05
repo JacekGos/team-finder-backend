@@ -1,7 +1,10 @@
-package com.jacekg.teamfinder.venue.utils.converter;
+package com.jacekg.teamfinder.event.utils.converter;
 
+import com.jacekg.teamfinder.event.dto.EventResponse;
+import com.jacekg.teamfinder.event.model.Event;
 import com.jacekg.teamfinder.venue.dto.VenueResponse;
 import com.jacekg.teamfinder.venue.model.Venue;
+import jakarta.annotation.PostConstruct;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.PropertyMap;
 import org.modelmapper.TypeMap;
@@ -9,7 +12,6 @@ import org.modelmapper.convention.MatchingStrategies;
 import org.modelmapper.spi.Mapping;
 import org.springframework.stereotype.Component;
 
-import jakarta.annotation.PostConstruct;
 import java.util.List;
 
 
@@ -26,14 +28,11 @@ public class ModelMapperConverter implements ModelConverter {
 	public void init() {
 		
 	    modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
-		
-		PropertyMap<Venue, VenueResponse> eventPropertyMap = new PropertyMap<Venue, VenueResponse>() {
+
+		PropertyMap<Event, EventResponse> eventPropertyMap = new PropertyMap<Event, EventResponse>() {
 			@Override
 			protected void configure() {
-				map().setEventDates(source.getDates());
-				map().setActivities(source.getActivitiesNames());
-				map().setLat(source.getLat());
-				map().setLng(source.getLng());
+				map().setUsersId(source.getPlayersId());
 			}
 		};
 		
@@ -46,8 +45,7 @@ public class ModelMapperConverter implements ModelConverter {
 	    }
 	}
 	
-	public VenueResponse convertToResponse(Venue venue) {
-
-        return modelMapper.map(venue, VenueResponse.class);
+	public EventResponse convertToResponse(Event event) {
+        return modelMapper.map(event, EventResponse.class);
 	}
 }

@@ -1,5 +1,6 @@
 package com.jacekg.teamfinder.config;
 
+import com.jacekg.teamfinder.event.utils.factory.EventCreator;
 import com.jacekg.teamfinder.venue.utils.factory.VenueCreator;
 import org.locationtech.jts.geom.GeometryFactory;
 import org.modelmapper.ModelMapper;
@@ -22,5 +23,10 @@ public class BaseConfiguration {
     @Bean
     public VenueCreator venueBaseCreator() {
         return new VenueCreator();
+    }
+
+    @Bean
+    public EventCreator eventBaseCreator() {
+        return new EventCreator();
     }
 }
