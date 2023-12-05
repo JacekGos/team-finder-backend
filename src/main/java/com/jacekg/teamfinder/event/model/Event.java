@@ -79,6 +79,7 @@ public abstract class Event {
         this.creator = creator;
         this.date = date;
         this.price = price;
+        this.players.add(creator);
     }
 
     public List<Long> getPlayersId() {

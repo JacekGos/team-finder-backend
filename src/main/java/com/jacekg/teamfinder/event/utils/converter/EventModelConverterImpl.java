@@ -31,7 +31,7 @@ public class EventModelConverterImpl implements EventModelConverter {
 			@Override
 			protected void configure() {
 				map().setCreatorUserId(source.getCreatorUserId());
-				map().setUsersId(source.getPlayersId());
+				map().setPlayersId(source.getPlayersId());
 				map().setVenueId(source.getVenueId());
 			}
 		};
