@@ -1,5 +1,6 @@
 package com.jacekg.teamfinder.event.service;
 
+import com.jacekg.teamfinder.event.dto.EventResponse;
 import com.jacekg.teamfinder.event.model.Event;
 import com.jacekg.teamfinder.event.dto.EventRequest;
 
@@ -7,7 +8,7 @@ import java.util.List;
 
 public interface EventService {
 
-    public List<Event> getAllEvents();
+    public List<EventResponse> getAllEvents();
 
-    public Event createEvent(EventRequest eventRequest);
+    public EventResponse createEvent(EventRequest eventRequest);
 }

@@ -45,7 +45,6 @@ public abstract class Event {
     @Column(name = "name", nullable = false)
     private String name;
 
-//    @Column(name = "activity_type", nullable = false)
     @ManyToOne(fetch = FetchType.LAZY,
             cascade = {CascadeType.DETACH, CascadeType.MERGE,
                     CascadeType.PERSIST, CascadeType.REFRESH})
@@ -58,7 +57,6 @@ public abstract class Event {
     @Column(name = "price", nullable = false)
     private float price;
 
-//    @Column(name = "venue", nullable = false)
     @ManyToOne(fetch = FetchType.LAZY,
             cascade = {CascadeType.DETACH, CascadeType.MERGE,
                     CascadeType.PERSIST, CascadeType.REFRESH})
@@ -74,15 +72,20 @@ public abstract class Event {
     @ManyToMany(mappedBy = "participatedGames")
     private Set<User> players = new HashSet<>();
 
-    public Event(String name, ActivityType activityType, LocalDateTime date, float price) {
+    public Event(String name, ActivityType activityType, Venue venue, LocalDateTime date, float price) {
         this.name = name;
         this.activityType = activityType;
+        this.venue = venue;
         this.date = date;
         this.price = price;
     }
 
     public List<Long> getPlayersId() {
         return this.players.stream().map(User::getId).collect(Collectors.toList());
+    }
+
+    public long getVenueId() {
+        return venue != null ? venue.getId() : 0;
     }
 
     public void addCreator(User user) {

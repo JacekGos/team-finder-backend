@@ -17,6 +17,6 @@ public class TennisEvent extends Event {
 
     @Builder
     public TennisEvent(String name, ActivityType activityType, LocalDateTime date, float price, Venue venue, User creator) {
-        super(name, activityType, date, price);
+        super(name, activityType, venue, date, price);
     }
 }
