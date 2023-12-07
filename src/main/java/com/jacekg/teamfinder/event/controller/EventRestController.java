@@ -11,7 +11,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.HttpStatus;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.Map;
+
 import static org.springframework.http.ResponseEntity.status;
 
 @Controller
@@ -41,5 +44,12 @@ public class EventRestController {
     public void removeEvent(@PathVariable long eventId) throws Exception {
         log.info("removeEvent: eventId: {}", eventId);
         eventService.removeEvent(eventId);
+    }
+
+    @GetMapping("/events/filter")
+    public ResponseEntity<List<EventResponse>> getAllEventsByFilters
+            (@RequestParam Map<String, String> filterParams) throws IOException {
+        log.info("getAllEventsByFilters: filters: {}", filterParams.toString());
+        return status(HttpStatus.OK).body(eventService.getAllEventsByFilters(filterParams));
     }
 }

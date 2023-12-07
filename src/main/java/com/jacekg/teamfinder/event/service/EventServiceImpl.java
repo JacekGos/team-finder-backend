@@ -6,6 +6,7 @@ import com.jacekg.teamfinder.event.exceptions.RemoveEventException;
 import com.jacekg.teamfinder.event.model.Event;
 import com.jacekg.teamfinder.event.dto.EventRequest;
 import com.jacekg.teamfinder.event.repository.EventRepository;
+import com.jacekg.teamfinder.event.utils.EventsFilterSpecification;
 import com.jacekg.teamfinder.event.utils.converter.EventModelConverter;
 import com.jacekg.teamfinder.event.utils.factory.EventBaseCreator;
 import com.jacekg.teamfinder.user.model.User;
@@ -17,6 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -26,8 +28,9 @@ import java.util.stream.Collectors;
 public class EventServiceImpl implements EventService {
 
     private EventRepository eventRepository;
-    private final EventBaseCreator eventCreator;
+    private EventBaseCreator eventCreator;
     private EventModelConverter modelConverter;
+    private EventsFilterSpecification filter;
 
     @Transactional
     @Override
@@ -36,7 +39,16 @@ public class EventServiceImpl implements EventService {
         List<Event> events = eventRepository.findAll();
         events.forEach(event -> log.info("found event: {}", event));
 
-        return events.stream().map(venue -> modelConverter.convertToResponse(venue)).collect(Collectors.toList());//        return events;
+        return events.stream().map(venue -> modelConverter.convertToResponse(venue)).collect(Collectors.toList());
+    }
+
+    @Transactional
+    @Override
+    public List<EventResponse> getAllEventsByFilters(Map<String, String> filterParams) {
+
+        return eventRepository.findAll(filter.getEvents(filterParams)).stream()
+                .map(event ->  modelConverter.convertToResponse(event))
+                .collect(Collectors.toList());
     }
 
     @Transactional

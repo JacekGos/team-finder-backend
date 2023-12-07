@@ -11,4 +11,5 @@ public interface VenueService {
 	
 	public List<VenueResponse> getAllVenues();
 	public VenueResponse createVenue(VenueRequest venueRequest) throws IOException, Exception;
+	public List<Long> getAllIdsByActivityTypeAndAddress(String activityType, String address, Double range) throws IOException;
 }
