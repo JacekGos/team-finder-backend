@@ -60,6 +60,7 @@ public class VenueServiceImpl implements VenueService {
 
         Point venueCoordinates =
                 geometryFactory.createPoint(new Coordinate(location.getLongitude(), location.getLatitude()));
+        venueCoordinates.setSRID(4326);
 
         log.info("getAllIdsByActivityTypeAndAddress: venueCoordinates:{}, range: {}", venueCoordinates, range);
         return venueRepository.getIdsWithinDistance(venueCoordinates, range);
@@ -90,11 +91,12 @@ public class VenueServiceImpl implements VenueService {
         try {
             GeocodeObject geocodeObject = geocodingService.findLocationByAddress(address);
             GeocodeLocation location = geocodeObject.getGeometry().getGeocodeLocation();
-            coordinates = geometryFactory.createPoint(new Coordinate(location.getLatitude(), location.getLongitude()));
+            coordinates = geometryFactory.createPoint(new Coordinate(location.getLongitude(), location.getLatitude()));
         } catch (IOException ex) {
             throw new CreateVenueException("No location found for address: " + address);
         }
 
+        coordinates.setSRID(4326);
         return coordinates;
     }
 

@@ -19,6 +19,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -46,7 +47,8 @@ public abstract class Venue {
     @Column(name = "address", nullable = false)
     private String address;
 
-    @Column(columnDefinition = "geometry")
+    //    @Column(columnDefinition = "geometry")
+    @Column(columnDefinition = "geometry(Point,4326)")
     private Point location;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)

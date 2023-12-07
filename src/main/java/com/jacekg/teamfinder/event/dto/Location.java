@@ -10,6 +10,6 @@ import lombok.*;
 @ToString
 public class Location {
 
-    private double lat;
     private double lng;
+    private double lat;
 }

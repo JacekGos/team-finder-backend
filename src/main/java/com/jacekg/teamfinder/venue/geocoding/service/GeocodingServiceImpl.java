@@ -54,7 +54,8 @@ public class GeocodingServiceImpl implements GeocodingService {
 
 		ResponseBody responseBody = client.newCall(request).execute().body();
 
-		GeocodeResult result = objectMapper.readValue(responseBody.string(), GeocodeResult.class);
+        assert responseBody != null;
+        GeocodeResult result = objectMapper.readValue(responseBody.string(), GeocodeResult.class);
 		
 		if (result.getResults().isEmpty() && !result.getStatus().equals("ok")) {
 			throw new CreateVenueException("No location found");
