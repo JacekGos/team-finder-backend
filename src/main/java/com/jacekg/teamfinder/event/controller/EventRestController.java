@@ -46,6 +46,7 @@ public class EventRestController {
         eventService.removeEvent(eventId);
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/events/filter")
     public ResponseEntity<List<EventResponse>> getAllEventsByFilters
             (@RequestParam Map<String, String> filterParams) throws IOException {

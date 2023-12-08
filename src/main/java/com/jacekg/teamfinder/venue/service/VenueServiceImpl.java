@@ -52,7 +52,7 @@ public class VenueServiceImpl implements VenueService {
 
     @Transactional
     @Override
-    public List<Long> getAllIdsByActivityTypeAndAddress(String activityType, String address, Double range) throws IOException {
+    public List<Long> getAllIdsByActivityTypeAndLocation(String activityType, String address, Double range) throws IOException {
 
         GeocodeObject geocodeObject = geocodingService.findLocationByAddress(address);
 

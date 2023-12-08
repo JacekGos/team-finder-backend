@@ -42,16 +42,16 @@ public class EventsFilterSpecification {
                 root.fetch("venue", JoinType.LEFT);
                 root.fetch("activityType", JoinType.LEFT);
 
-//                if (filterParams.get("address") != null && !filterParams.get("address").isEmpty()
+//                if (filterParams.get("location") != null && !filterParams.get("location").isEmpty()
 //                        && filterParams.get("activityType") != null && !filterParams.get("activityType").isEmpty()) {
-                if (filterParams.get("address") != null && !filterParams.get("address").isEmpty()) {
+                if (filterParams.get("location") != null && !filterParams.get("location").isEmpty()) {
 
                     List<Long> venuesId = null;
 
                     try {
-                        venuesId = venueService.getAllIdsByActivityTypeAndAddress(
+                        venuesId = venueService.getAllIdsByActivityTypeAndLocation(
                                 filterParams.get("activityType"),
-                                filterParams.get("address"),
+                                filterParams.get("location"),
                                 Double.parseDouble(filterParams.get("range")));
 
                     } catch (NumberFormatException | IOException e) {
