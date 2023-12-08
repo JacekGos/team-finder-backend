@@ -42,9 +42,9 @@ public class EventsFilterSpecification {
                 root.fetch("venue", JoinType.LEFT);
                 root.fetch("activityType", JoinType.LEFT);
 
-//                if (filterParams.get("location") != null && !filterParams.get("location").isEmpty()
-//                        && filterParams.get("activityType") != null && !filterParams.get("activityType").isEmpty()) {
-                if (filterParams.get("location") != null && !filterParams.get("location").isEmpty()) {
+//                if (filterParams.get("location") != null && !filterParams.get("location").isEmpty()) {
+                log.info("filterParams: {} isEmpyty: {}", filterParams.get("location"), filterParams.get("location").isEmpty());
+                if (filterParams.get("location") != null && !filterParams.get("location").trim().isEmpty() && !filterParams.get("location").isEmpty()) {
 
                     List<Long> venuesId = null;
 
