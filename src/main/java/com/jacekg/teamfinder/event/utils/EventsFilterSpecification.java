@@ -17,7 +17,10 @@ import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
 
 import java.io.IOException;
+import java.time.Instant;
 import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -32,6 +35,9 @@ public class EventsFilterSpecification {
 
     public Specification<Event> getEvents(Map<String, String> filterParams) {
 
+//        DateTimeFormatter formatter = DateTimeFormatter.ISO_INSTANT;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy'T'HH:mm");
+
         return new Specification<Event>() {
 
             final List<Predicate> predicates = new ArrayList<>();
@@ -42,7 +48,6 @@ public class EventsFilterSpecification {
                 root.fetch("venue", JoinType.LEFT);
                 root.fetch("activityType", JoinType.LEFT);
 
-//                if (filterParams.get("location") != null && !filterParams.get("location").isEmpty()) {
                 log.info("filterParams: {} isEmpyty: {}", filterParams.get("location"), filterParams.get("location").isEmpty());
                 if (filterParams.get("location") != null && !filterParams.get("location").trim().isEmpty() && !filterParams.get("location").isEmpty()) {
 
@@ -52,7 +57,7 @@ public class EventsFilterSpecification {
                         venuesId = venueService.getAllIdsByActivityTypeAndLocation(
                                 filterParams.get("activityType"),
                                 filterParams.get("location"),
-                                Double.parseDouble(filterParams.get("range")));
+                                Double.parseDouble(filterParams.get("range")) * 1000);
 
                     } catch (NumberFormatException | IOException e) {
                         e.printStackTrace();
@@ -81,8 +86,10 @@ public class EventsFilterSpecification {
                 if (filterParams.get("startDate") != null && !filterParams.get("startDate").isEmpty()
                         && filterParams.get("endDate") != null && !filterParams.get("endDate").isEmpty()) {
 
-                    LocalDateTime startDate = LocalDateTime.parse(filterParams.get("startDate") + "T00:00");
-                    LocalDateTime endDate = LocalDateTime.parse(filterParams.get("endDate") + "T00:00");
+//                    LocalDateTime startDate = LocalDateTime.ofInstant(Instant.parse(filterParams.get("startDate")), ZoneOffset.UTC);
+//                    LocalDateTime endDate = LocalDateTime.ofInstant(Instant.parse(filterParams.get("endDate")), ZoneOffset.UTC);
+                    LocalDateTime startDate = LocalDateTime.parse(filterParams.get("startDate"));
+                    LocalDateTime endDate = LocalDateTime.parse(filterParams.get("endDate"));
 
                     predicates.add(criteriaBuilder.between(root.get("date"), startDate, endDate.plusDays(1)));
 

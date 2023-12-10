@@ -54,6 +54,8 @@ public class VenueServiceImpl implements VenueService {
     @Override
     public List<Long> getAllIdsByActivityTypeAndLocation(String activityType, String address, Double range) throws IOException {
 
+        log.info("getAllIdsByActivityTypeAndLocation: activityType: {}, address: {}, range: {}", activityType, address, range);
+
         GeocodeObject geocodeObject = geocodingService.findLocationByAddress(address);
 
         GeocodeLocation location = geocodeObject.getGeometry().getGeocodeLocation();
