@@ -2,6 +2,7 @@ package com.jacekg.teamfinder.venue.geocoding.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jacekg.teamfinder.venue.exceptions.CreateVenueException;
+import com.jacekg.teamfinder.venue.geocoding.exceptions.LocationException;
 import com.jacekg.teamfinder.venue.geocoding.model.GeocodeObject;
 import com.jacekg.teamfinder.venue.geocoding.model.GeocodeResult;
 import okhttp3.OkHttpClient;
@@ -58,7 +59,7 @@ public class GeocodingServiceImpl implements GeocodingService {
         GeocodeResult result = objectMapper.readValue(responseBody.string(), GeocodeResult.class);
 		
 		if (result.getResults().isEmpty() && !result.getStatus().equals("ok")) {
-			throw new CreateVenueException("No location found");
+			throw new LocationException("No location found");
 		} else {
 			return result.getResults().get(0);
 		}
