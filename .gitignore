@@ -34,3 +34,5 @@ build/
 
 secrets.properties
 secrets-docker.properties
+
+log/*.log
