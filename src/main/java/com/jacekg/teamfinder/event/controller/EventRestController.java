@@ -28,7 +28,7 @@ public class EventRestController {
         this.eventService = eventService;
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+//    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/events")
     public ResponseEntity<List<EventResponse>> getAllEvents() {
         return status(HttpStatus.OK).body(eventService.getAllEvents());
