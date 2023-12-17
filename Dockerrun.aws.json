@@ -1,0 +1,46 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "postgres-team-finder",
+      "image": "postgis/postgis",
+      "environment": [
+        {
+          "name": "POSTGRES_PASSWORD",
+          "value": "jgdev"
+        },
+        {
+          "name": "POSTGRES_USER",
+          "value": "password"
+        },
+        {
+          "name": "POSTGRES_DB",
+          "value": "team-finder"
+        }        
+      ],
+      "essential": true,
+      "memory": 256,
+      "portMappings": [
+        {
+          "hostPort": 5432,
+          "containerPort": 5432
+        }
+      ]
+    },
+    {
+      "name": "team-finder-service",
+      "image": "jacekg11/team-finder:latest",
+      "essential": true,
+      "memory": 256,
+      "portMappings": [
+        {
+          "hostPort": 8080,
+          "containerPort": 8080
+        }
+      ],
+      "links": [
+        "postgres-team-finder"
+      ]
+    }
+  ]
+}
