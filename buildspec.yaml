@@ -4,7 +4,7 @@ phases:
   install:
     on-failure: ABORT | CONTINUE
     runtime-versions:
-      java: coretto11
+      java: corretto11
     commands:
       - echo install
   pre_build:
