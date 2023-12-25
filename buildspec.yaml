@@ -23,5 +23,5 @@ phases:
 artifacts:
   files:
     - '**/*'
-    - target/team-finder-backend-1.0.0-RELEASE.jar
+    - target\team-finder-backend-1.0.0-RELEASE.jar
   discard-paths: yes
