@@ -26,7 +26,7 @@ public class EnvironmentConfigurationLogger {
         StreamSupport.stream(sources.spliterator(), false)
                 .filter(ps -> ps instanceof EnumerablePropertySource)
                 .map(ps -> ((EnumerablePropertySource) ps).getPropertyNames())
-                .flatMap(Arrays::stream).distinct().forEach(prop -> log.info("{}", prop));
-//                .flatMap(Arrays::stream).distinct().forEach(prop -> log.info("{}:{}", prop, environment.getProperty(prop)));
+//                .flatMap(Arrays::stream).distinct().forEach(prop -> log.info("{}", prop));
+                .flatMap(Arrays::stream).distinct().forEach(prop -> log.info("{}:{}", prop, environment.getProperty(prop)));
     }
 }
