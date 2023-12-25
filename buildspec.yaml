@@ -2,26 +2,26 @@ version: 0.2
 
 phases:
   install:
-    on-failure: ABORT | CONTINUE
+#    on-failure: ABORT | CONTINUE
     runtime-versions:
       java: corretto17
     commands:
       - echo install
   pre_build:
-    on-failure: ABORT | CONTINUE
+#    on-failure: ABORT | CONTINUE
     commands:
       - echo pre_build
   build:
-    on-failure: ABORT | CONTINUE
+#    on-failure: ABORT | CONTINUE
     commands:
       - mvn clean package
       - echo build
   post_build:
-    on-failure: ABORT | CONTINUE
+#    on-failure: ABORT | CONTINUE
     commands:
       - echo post_build
 artifacts:
   files:
     - '**/*'
-    - target\team-finder-backend-1.0.0-RELEASE.jar
+    - target/team-finder-backend-1.0.0-RELEASE.jar
   discard-paths: yes
