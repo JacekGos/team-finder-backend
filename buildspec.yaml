@@ -24,4 +24,4 @@ artifacts:
   files:
     - '**/*'
     - target/team-finder-backend-1.0.0-RELEASE.jar
-  discard-path: yes
+  discard-paths: yes
