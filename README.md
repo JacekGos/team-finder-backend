@@ -1,4 +1,4 @@
-<h1 align="center">Team Finder - REST API</h1>
+<h1 align="center">Team Finder - Backend</h1>
 
 
 <h2 align="left">General info</h2>
