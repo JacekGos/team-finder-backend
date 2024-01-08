@@ -38,7 +38,7 @@ public class VenueRepositoryTest {
         Point location = geometryFactory.createPoint(new Coordinate(52.24678842149118, 21.014623478817406));
         venue.setLocation(location);
 
-        acitivitiesTypes.add()
+//        acitivitiesTypes.add()
     }
 
     @Test
@@ -46,7 +46,7 @@ public class VenueRepositoryTest {
         Point location = geometryFactory.createPoint(new Coordinate(52.24678842149118, 21.014623478817406));
         venueRepository.save(venue);
 
-        Venue foundVenue = venueRepository.findByLocationAndActivitiesIn()
+//        Venue foundVenue = venueRepository.findByLocationAndActivitiesIn()
 
     }
 
